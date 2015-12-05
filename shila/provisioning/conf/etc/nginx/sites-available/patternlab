@@ -1,7 +1,15 @@
 server {
     listen 8080;
     server_name pl.shila.dev;
-    root /var/www/shila-dev/code/patternlab-php/public;
+    root /var/www/shila-prod/code/patternlab-php/public;
     error_log /var/log/nginx/pl_shila_dev_error.log;
     access_log /var/log/nginx/pl_shila_dev_access.log;
+}
+
+server {
+    listen 8080;
+    server_name dev-pl.shila.dev;
+    root /var/www/shila-dev/code/patternlab-php/public;
+    error_log /var/log/nginx/dev_pl_shila_dev_error.log;
+    access_log /var/log/nginx/dev_pl_shila_dev_access.log;
 }

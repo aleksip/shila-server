@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-export CONF_ROOT=/vagrant/provisioning/conf
+MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source ${MY_DIR}/scripts.conf
 export DEBIAN_FRONTEND=noninteractive
 
 
@@ -57,10 +58,10 @@ apt-get -y install php5-curl
 # Nginx
 rm /etc/nginx/sites-enabled/default
 ln -fs ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
-ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal8 /etc/nginx/dev-nginx-drupal8
 ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal8 /etc/nginx/prod-nginx-drupal8
-ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal7 /etc/nginx/dev-nginx-drupal7
 ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal7 /etc/nginx/prod-nginx-drupal7
+ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal8 /etc/nginx/dev-nginx-drupal8
+ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal7 /etc/nginx/dev-nginx-drupal7
 ln -fs ${CONF_ROOT}/etc/nginx/sites-available/shila /etc/nginx/sites-available/shila
 ln -fs ${CONF_ROOT}/etc/nginx/sites-available/patternlab /etc/nginx/sites-available/patternlab
 ln -fs /etc/nginx/sites-available/shila /etc/nginx/sites-enabled/shila
@@ -72,18 +73,3 @@ ln -fs ${CONF_ROOT}/etc/default/varnish /etc/default/varnish
 ln -fs ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varnish.service
 systemctl daemon-reload
 systemctl restart varnish.service
-
-
-################################################################################
-# Vagrant specific configuration
-################################################################################
-
-# Mount script for starting services
-cp ${CONF_ROOT}/etc/init/vagrant-mounted.conf /etc/init/vagrant-mounted.conf
-
-# Nicer default shell for vagrant user
-chsh -s /bin/bash vagrant
-
-# Prepare instance directory
-mkdir -p /vagrant/instances/shila-dev
-ln -fs /vagrant/instances/shila-dev /var/www/shila-dev

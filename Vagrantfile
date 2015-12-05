@@ -18,12 +18,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shila.vm.synced_folder "shila", "/vagrant", nfs: true
     # $ vagrant plugin install vagrant-bindfs
     shila.bindfs.bind_folder \
-      "/vagrant/instances/shila-dev/data/drupal-files", \
-      "/vagrant/instances/shila-dev/data/drupal-files", \
+      "/vagrant/instances/shila-prod/data/drupal-files", \
+      "/vagrant/instances/shila-prod/data/drupal-files", \
       u: "33", g: "33", after: :provision
-    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-host.sh"
-    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-code.sh", privileged: false
-    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-data.sh", privileged: false
+    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-privileged.sh"
+    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-unprivileged.sh", privileged: false
   end
 
 end
