@@ -3,9 +3,10 @@
 export CONF_ROOT=/vagrant/provisioning/conf
 export DEBIAN_FRONTEND=noninteractive
 
-##
+
+################################################################################
 # Install software
-##
+################################################################################
 
 apt-get update
 
@@ -48,9 +49,10 @@ gem install bundler
 # Other required packages
 apt-get -y install php5-curl
 
-##
+
+################################################################################
 # Configuration
-##
+################################################################################
 
 # Nginx
 rm /etc/nginx/sites-enabled/default
@@ -60,7 +62,9 @@ ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal8 /etc/nginx/prod-nginx-drupal8
 ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal7 /etc/nginx/dev-nginx-drupal7
 ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal7 /etc/nginx/prod-nginx-drupal7
 ln -fs ${CONF_ROOT}/etc/nginx/sites-available/shila /etc/nginx/sites-available/shila
+ln -fs ${CONF_ROOT}/etc/nginx/sites-available/patternlab /etc/nginx/sites-available/patternlab
 ln -fs /etc/nginx/sites-available/shila /etc/nginx/sites-enabled/shila
+ln -fs /etc/nginx/sites-available/patternlab /etc/nginx/sites-enabled/patternlab
 
 # Varnish
 ln -fs ${CONF_ROOT}/etc/varnish/default.vcl /etc/varnish/default.vcl
@@ -69,9 +73,10 @@ ln -fs ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varni
 systemctl daemon-reload
 systemctl restart varnish.service
 
-##
+
+################################################################################
 # Vagrant specific configuration
-##
+################################################################################
 
 # Mount script for starting services
 cp ${CONF_ROOT}/etc/init/vagrant-mounted.conf /etc/init/vagrant-mounted.conf
