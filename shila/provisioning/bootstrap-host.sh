@@ -11,6 +11,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 apt-get update
 
+# Some common dependencies
+apt-get -y install curl unzip
+
 # MySQL
 apt-get -y install mysql-server mysql-client
 
@@ -29,9 +32,6 @@ apt-get -y install varnish
 
 # Git
 apt-get -y install git
-
-# Composer and Drush dependencies
-apt-get -y install curl unzip
 
 # Composer
 curl -sS https://getcomposer.org/installer | php
