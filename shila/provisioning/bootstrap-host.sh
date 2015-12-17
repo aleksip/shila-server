@@ -65,9 +65,7 @@ ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal7 /etc/nginx/prod-nginx-drupal7
 ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal8 /etc/nginx/dev-nginx-drupal8
 ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal7 /etc/nginx/dev-nginx-drupal7
 ln -fs ${CONF_ROOT}/etc/nginx/sites-available/shila /etc/nginx/sites-available/shila
-ln -fs ${CONF_ROOT}/etc/nginx/sites-available/patternlab /etc/nginx/sites-available/patternlab
 ln -fs /etc/nginx/sites-available/shila /etc/nginx/sites-enabled/shila
-ln -fs /etc/nginx/sites-available/patternlab /etc/nginx/sites-enabled/patternlab
 
 # Varnish
 ln -fs ${CONF_ROOT}/etc/varnish/default.vcl /etc/varnish/default.vcl
