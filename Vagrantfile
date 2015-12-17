@@ -15,7 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shila.vm.box = "debian/jessie64"
     shila.vm.hostname = 'shila.vm'
     shila.vm.network :private_network, ip: '192.168.33.10'
-    shila.vm.synced_folder "shila", "/vagrant", nfs: true
+    shila.vm.synced_folder "shila", "/vagrant", nfs: true, \
+      :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
     # $ vagrant plugin install vagrant-bindfs
     shila.bindfs.bind_folder \
       "/vagrant/instances/shila-prod/data/drupal-files", \
