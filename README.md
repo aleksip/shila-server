@@ -12,7 +12,9 @@ A setup for running one or more instances (development, staging, production...) 
 - Git
 - Composer
 - Drush
-- Ruby and Bundler (for Sass development)
+- Node.js + npm
+- Gulp
+- Bower
 - Pattern Lab
 
 Uses [vagrant-bindfs](https://github.com/gael-ian/vagrant-bindfs).

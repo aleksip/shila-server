@@ -42,10 +42,12 @@ wget -nv https://github.com/drush-ops/drush/releases/download/8.0.0/drush.phar
 chmod +x drush.phar
 mv drush.phar /usr/local/bin/drush
 
-# Ruby + Bundler
-apt-get -y install ruby
-apt-get -y install ruby-dev
-gem install bundler
+# Node.js + npm
+apt-get -y install npm
+ln -fs /usr/bin/nodejs /usr/bin/node
+
+# Gulp + Bower
+npm install -g gulp bower
 
 # Other required packages
 apt-get -y install php5-curl
