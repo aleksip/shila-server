@@ -73,3 +73,6 @@ ln -fs ${CONF_ROOT}/etc/default/varnish /etc/default/varnish
 ln -fs ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varnish.service
 systemctl daemon-reload
 systemctl restart varnish.service
+
+# Set instances directory owner
+chown ${OWNER_USER}:${OWNER_USER} ${INSTANCES_DIR}
