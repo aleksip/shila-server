@@ -24,6 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       u: "33", g: "33", after: :provision
     shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-privileged.sh"
     shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-unprivileged.sh", privileged: false
+    shila.vm.provision :shell, :path => "shila/provisioning/start-services.sh", run: "always"
   end
 
 end

@@ -12,6 +12,7 @@ A setup for running one or more instances (development, staging, production...) 
 - Git
 - Composer
 - Drush
+- Drupal Console
 - Node.js + npm
 - Gulp
 - Bower

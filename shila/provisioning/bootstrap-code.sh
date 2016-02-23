@@ -4,8 +4,6 @@ MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${MY_DIR}/scripts.conf
 
 # Prepare directories
-mkdir -p ${INSTANCE_DIR}
-ln -fs ${INSTANCE_DIR} ${SHILA_ROOT}
 mkdir -p ${CODE_DIR}
 
 # Shila Drupal
