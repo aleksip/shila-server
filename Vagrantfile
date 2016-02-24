@@ -15,6 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shila.vm.box = "debian/jessie64"
     shila.vm.hostname = 'shila.vm'
     shila.vm.network :private_network, ip: '192.168.33.10'
+    shila.vm.network "forwarded_port", guest: 3000, host: 3000
     shila.vm.synced_folder "shila", "/vagrant", nfs: true, \
       :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
     # $ vagrant plugin install vagrant-bindfs
