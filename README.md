@@ -6,7 +6,7 @@ A setup for running one or more instances (development, staging, production...) 
 
 - Debian "jessie"
 - MySQL
-- PHP FPM + APC
+- PHP 7.0 FPM + APC
 - Nginx
 - Varnish
 - Git
@@ -15,6 +15,5 @@ A setup for running one or more instances (development, staging, production...) 
 - Drupal Console
 - Node.js + npm
 - Gulp
-- Bower
 
 Uses [vagrant-bindfs](https://github.com/gael-ian/vagrant-bindfs).
