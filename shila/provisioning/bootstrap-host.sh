@@ -12,19 +12,22 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 
 # Some common dependencies
-apt-get -y install curl unzip
+apt-get -y install apt-transport-https curl unzip
 
 # MySQL
 apt-get -y install mysql-server mysql-client
 
-# PHP FPM + APC
-apt-get -y install php5-fpm php5-mysql php5-cli php5-gd php-apc
+# PHP7.0
+curl -sS https://www.dotdeb.org/dotdeb.gpg | apt-key add -
+echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
+echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
+apt-get update
+apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-apc php7.0-curl php7.0-mbstring php7.0-dom
 
 # Nginx
 apt-get -y install nginx
 
 # Varnish
-apt-get -y install apt-transport-https
 curl -sS https://repo.varnish-cache.org/GPG-key.txt | apt-key add -
 echo "deb https://repo.varnish-cache.org/debian/ jessie varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list
 apt-get update
@@ -48,14 +51,11 @@ mv drupal.phar /usr/local/bin/drupal
 chmod +x /usr/local/bin/drupal
 
 # Node.js + npm
-curl -sSL https://deb.nodesource.com/setup_5.x | bash -
+curl -sSL https://deb.nodesource.com/setup_6.x | bash -
 apt-get install -y nodejs
 
-# Gulp + Bower
-npm install -g gulp bower
-
-# Other required packages
-apt-get -y install php5-curl
+# Gulp
+npm install -g gulp
 
 
 ################################################################################
@@ -65,10 +65,7 @@ apt-get -y install php5-curl
 # Nginx
 rm /etc/nginx/sites-enabled/default
 ln -fs ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
-ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal8 /etc/nginx/prod-nginx-drupal8
-ln -fs ${CONF_ROOT}/etc/nginx/prod-nginx-drupal7 /etc/nginx/prod-nginx-drupal7
-ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal8 /etc/nginx/dev-nginx-drupal8
-ln -fs ${CONF_ROOT}/etc/nginx/dev-nginx-drupal7 /etc/nginx/dev-nginx-drupal7
+ln -fs ${CONF_ROOT}/etc/nginx/nginx-drupal /etc/nginx/nginx-drupal
 ln -fs ${CONF_ROOT}/etc/nginx/sites-available/shila /etc/nginx/sites-available/shila
 ln -fs /etc/nginx/sites-available/shila /etc/nginx/sites-enabled/shila
 

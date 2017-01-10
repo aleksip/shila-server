@@ -1,4 +1,4 @@
-        root /var/www/shila-prod/code/shila-drupal/d8/web; ## <-- Your only path reference.
+        #root /var/www/shila-prod/code/shila-drupal/d8/web; ## <-- Your only path reference.
 
         # Enable compression, this will help if you have for instance advagg‎ module
         # by serving Gzip versions of the files.
@@ -65,7 +65,7 @@
                 include fastcgi_params;
                 fastcgi_param SCRIPT_FILENAME $request_filename;
                 fastcgi_intercept_errors on;
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         }
 
         # Fighting with Styles? This little gem is amazing.
