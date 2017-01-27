@@ -76,5 +76,5 @@ ln -fs ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varni
 
 # Prepare instance directories
 mkdir -p ${INSTANCE_DIR}
-test ${OWNER_USER} != "vagrant" && (chown -R ${OWNER_USER}:${OWNER_USER} ${INSTANCES_DIR})
+test ${OWNER_USER} != "vagrant" && (chown -R ${OWNER_USER}:${OWNER_USER} ${INSTANCES_ROOT})
 ln -fs ${INSTANCE_DIR} ${SHILA_ROOT}
