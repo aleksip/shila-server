@@ -1,0 +1,8 @@
+server {
+    listen 8080;
+    server_name www.shila.dev;
+    root /var/www/shila-dev/code/shila-drupal/d8/web;
+    include nginx-drupal;
+    error_log /var/log/nginx/www_shila_dev_error.log;
+    access_log /var/log/nginx/www_shila_dev_access.log;
+}

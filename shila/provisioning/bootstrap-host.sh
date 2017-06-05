@@ -63,18 +63,19 @@ npm install -g gulp
 ################################################################################
 
 # Nginx
+ln -sf ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
+ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal /etc/nginx/nginx-drupal
+rm -rf /etc/nginx/sites-available
+ln -sf ${CONF_ROOT}/etc/nginx/sites-available /etc/nginx/sites-available
 rm /etc/nginx/sites-enabled/default
-ln -fs ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
-ln -fs ${CONF_ROOT}/etc/nginx/nginx-drupal /etc/nginx/nginx-drupal
-ln -fs ${CONF_ROOT}/etc/nginx/sites-available/shila /etc/nginx/sites-available/shila
-ln -fs /etc/nginx/sites-available/shila /etc/nginx/sites-enabled/shila
+ln -sf /etc/nginx/sites-available/local/www.shila.dev /etc/nginx/sites-enabled/www.shila.dev
 
 # Varnish
-ln -fs ${CONF_ROOT}/etc/varnish/default.vcl /etc/varnish/default.vcl
-ln -fs ${CONF_ROOT}/etc/default/varnish /etc/default/varnish
-ln -fs ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varnish.service
+ln -sf ${CONF_ROOT}/etc/varnish/default.vcl /etc/varnish/default.vcl
+ln -sf ${CONF_ROOT}/etc/default/varnish /etc/default/varnish
+ln -sf ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varnish.service
 
 # Prepare instance directories
 mkdir -p ${INSTANCE_DIR}
 test ${OWNER_USER} != "vagrant" && (chown -R ${OWNER_USER}:${OWNER_USER} ${INSTANCES_ROOT})
-ln -fs ${INSTANCE_DIR} ${SHILA_ROOT}
+ln -sf ${INSTANCE_DIR} ${SHILA_ROOT}
