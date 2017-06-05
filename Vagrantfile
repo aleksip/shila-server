@@ -27,7 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # bindfs remount
     # $ vagrant plugin install vagrant-bindfs
     shila.bindfs.bind_folder \
-      "/shila-vagrant/shila-prod/data/drupal-files", "/shila-vagrant/shila-prod/data/drupal-files", \
+      "/shila-vagrant/shila-dev/data/drupal-files", "/shila-vagrant/shila-dev/data/drupal-files", \
       u: "33", g: "33", after: :provision
 
     shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-privileged.sh"
