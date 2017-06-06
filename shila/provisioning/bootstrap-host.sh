@@ -22,7 +22,7 @@ curl -sS https://www.dotdeb.org/dotdeb.gpg | apt-key add -
 echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 apt-get update
-apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-apc php7.0-curl php7.0-mbstring php7.0-dom
+apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-apc php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip
 
 # Nginx
 apt-get -y install nginx
