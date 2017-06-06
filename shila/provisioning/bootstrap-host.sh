@@ -69,6 +69,7 @@ rm -rf /etc/nginx/sites-available
 ln -sf ${CONF_ROOT}/etc/nginx/sites-available /etc/nginx/sites-available
 rm /etc/nginx/sites-enabled/default
 ln -sf /etc/nginx/sites-available/local/www.shila.dev /etc/nginx/sites-enabled/www.shila.dev
+ln -sf /etc/nginx/sites-available/local/pl.shila.dev /etc/nginx/sites-enabled/pl.shila.dev
 
 # Varnish
 ln -sf ${CONF_ROOT}/etc/varnish/default.vcl /etc/varnish/default.vcl
