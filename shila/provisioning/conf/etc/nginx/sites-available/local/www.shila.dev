@@ -1,5 +1,11 @@
 server {
     listen 8080;
+    server_name shila.dev;
+    return 301 http://www.shila.dev$request_uri;
+}
+
+server {
+    listen 8080;
     server_name www.shila.dev;
     root /var/www/shila-dev/code/shila-drupal/d8/web;
     include nginx-drupal;
