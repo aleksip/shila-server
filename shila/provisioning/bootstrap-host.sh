@@ -17,11 +17,16 @@ apt-get -y install apt-transport-https curl unzip
 # MySQL
 apt-get -y install mysql-server mysql-client
 
-# PHP7.0
+# PHP 5.6
+apt-get -y install php5-fpm php5-mysql php5-cli php5-gd php-apc php5-curl
+
+# Add Dotdeb repository
 curl -sS https://www.dotdeb.org/dotdeb.gpg | apt-key add -
 echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
 apt-get update
+
+# PHP 7.0
 apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-apc php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip
 
 # Nginx
@@ -62,9 +67,14 @@ npm install -g gulp
 # Configuration
 ################################################################################
 
+# PHP 5.6
+ln -sf ${CONF_ROOT}/etc/php5/fpm/php.ini /etc/php5/fpm/php.ini
+ln -sf ${CONF_ROOT}/etc/php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
+
 # Nginx
 ln -sf ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
 ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal /etc/nginx/nginx-drupal
+ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal6 /etc/nginx/nginx-drupal6
 rm -rf /etc/nginx/sites-available
 ln -sf ${CONF_ROOT}/etc/nginx/sites-available /etc/nginx/sites-available
 rm /etc/nginx/sites-enabled/default
