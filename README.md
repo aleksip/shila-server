@@ -2,18 +2,28 @@
 
 A setup for running one or more instances (development, staging, production...) of [Shila Drupal](https://github.com/aleksip/shila-drupal) in a Vagrant virtual machine.
 
-## Installed software
 
-- Debian "jessie"
-- MySQL
-- PHP 7.0 FPM + APC
-- Nginx
-- Varnish
-- Git
-- Composer
-- Drush
-- Drupal Console
-- Node.js + npm
-- Gulp
+## Installation
 
-Uses [vagrant-bindfs](https://github.com/gael-ian/vagrant-bindfs).
+- Install [VirtualBox](https://www.virtualbox.org/)
+- Install [Vagrant](https://www.vagrantup.com/)
+- Install [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest) plugin:
+    - `vagrant plugin install vagrant-vbguest`
+- Install [vagrant-bindfs](https://github.com/gael-ian/vagrant-bindfs) plugin:
+    - `vagrant plugin install vagrant-bindfs`
+- Create and configure guest machine:
+    - `vagrant up shila`
+
+
+## Software installed on guest machine (`debian/jessie64`)
+
+- [MySQL](https://www.mysql.com/)
+- [PHP](https://php.net/) 7.0 (for Drupal 7 and 8) and 5.6 (for Drupal 6)
+- [Nginx](https://nginx.org/)
+- [Varnish](https://varnish-cache.org/)
+- [Git](https://git-scm.com/)
+- [Composer](https://getcomposer.org/)
+- [Drush](http://www.drush.org/)
+- [Drupal Console](https://drupalconsole.com/)
+- [Node.js](https://nodejs.org/) + [npm](https://www.npmjs.com/)
+- [Gulp](http://gulpjs.com/)
