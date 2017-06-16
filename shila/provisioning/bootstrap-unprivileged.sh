@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-/vagrant/bootstrap-code.sh
-/vagrant/bootstrap-data.sh
+/shila-provisioning/bootstrap-code.sh
+/shila-provisioning/bootstrap-data.sh

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-/vagrant/bootstrap-host.sh
-/vagrant/bootstrap-host-vagrant.sh
+/shila-provisioning/bootstrap-host.sh
+/shila-provisioning/bootstrap-host-vagrant.sh

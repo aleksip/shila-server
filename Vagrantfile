@@ -16,18 +16,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shila.vm.hostname = 'shila.vm'
     shila.vm.network :private_network, ip: '192.168.33.10'
 
+    # Disable default mount
+    shila.vm.synced_folder ".", "/vagrant", disabled: true
+
     # Provisioning folder
-    shila.vm.synced_folder "shila/provisioning", "/vagrant", nfs: true, \
-      :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+    if Vagrant::Util::Platform.windows? then
+      shila.vm.synced_folder "shila/provisioning", "/shila-provisioning", type: "smb"
+    else
+      shila.vm.synced_folder "shila/provisioning", "/shila-provisioning", nfs: true, \
+        :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+    end
 
     # Instances folder
-    shila.vm.synced_folder "shila/instances", "/shila-vagrant", nfs: true, \
-      :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+    if Vagrant::Util::Platform.windows? then
+      shila.vm.synced_folder "shila/instances", "/shila-instances", type: "smb"
+    else
+      shila.vm.synced_folder "shila/instances", "/shila-instances", nfs: true, \
+        :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
+    end
 
     # bindfs remount
-    # $ vagrant plugin install vagrant-bindfs
     shila.bindfs.bind_folder \
-      "/shila-vagrant/shila-dev/data/drupal-files", "/shila-vagrant/shila-dev/data/drupal-files", \
+      "/shila-instances/shila-dev/data/drupal-files", "/shila-instances/shila-dev/data/drupal-files", \
       u: "33", g: "33", after: :provision
 
     shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-privileged.sh"
