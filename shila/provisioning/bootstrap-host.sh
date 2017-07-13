@@ -61,8 +61,8 @@ npm install -g gulp
 ################################################################################
 
 # PHP 5.6
-ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php5/fpm/php.ini
-ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
+ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php/5.6/fpm/php.ini
+ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php/5.6/fpm/pool.d/www.conf
 
 # Nginx
 ln -sf ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
