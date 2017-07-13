@@ -11,11 +11,11 @@ A setup for running one or more instances (development, staging, production...) 
     - `vagrant plugin install vagrant-vbguest`
 - Install [vagrant-bindfs](https://github.com/gael-ian/vagrant-bindfs) plugin:
     - `vagrant plugin install vagrant-bindfs`
-- Create and configure guest machine:
+- Create and provision the guest machine:
     - `vagrant up shila`
 
 
-## Software installed on guest machine (`debian/jessie64`)
+## Software installed on guest machine (`ubuntu/xenial64`)
 
 - [MySQL](https://www.mysql.com/)
 - [PHP](https://php.net/) 7.0 (for Drupal 7 and 8) and 5.6 (for Drupal 6)

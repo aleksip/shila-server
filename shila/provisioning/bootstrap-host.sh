@@ -2,8 +2,9 @@
 
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${MY_DIR}/scripts.conf
-export DEBIAN_FRONTEND=noninteractive
 
+export DEBIAN_FRONTEND=noninteractive
+timedatectl set-timezone ${TIMEZONE}
 
 ################################################################################
 # Install software
@@ -12,34 +13,26 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 
 # Some common dependencies
-apt-get -y install apt-transport-https curl unzip
+apt-get -y install unzip
 
 # MySQL
+debconf-set-selections <<< "mysql-server mysql-server/root_password password ${MYSQL_ROOT_PASSWORD}"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${MYSQL_ROOT_PASSWORD}"
 apt-get -y install mysql-server mysql-client
 
-# PHP 5.6
-apt-get -y install php5-fpm php5-mysql php5-cli php5-gd php-apc php5-curl
-
-# Add Dotdeb repository
-curl -sS https://www.dotdeb.org/dotdeb.gpg | apt-key add -
-echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
-echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list.d/dotdeb.list
-apt-get update
-
 # PHP 7.0
-apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-apc php7.0-curl php7.0-mbstring php7.0-dom php7.0-zip
+apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7.0-mbstring php7.0-xml php7.0-zip
+
+# PHP 5.6
+add-apt-repository ppa:ondrej/php
+apt-get update
+apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl
 
 # Nginx
 apt-get -y install nginx
 
 # Varnish
-curl -sS https://repo.varnish-cache.org/GPG-key.txt | apt-key add -
-echo "deb https://repo.varnish-cache.org/debian/ jessie varnish-4.1" >> /etc/apt/sources.list.d/varnish-cache.list
-apt-get update
 apt-get -y install varnish
-
-# Git
-apt-get -y install git
 
 # Composer
 curl -sS https://getcomposer.org/installer | php
@@ -68,8 +61,8 @@ npm install -g gulp
 ################################################################################
 
 # PHP 5.6
-ln -sf ${CONF_ROOT}/etc/php5/fpm/php.ini /etc/php5/fpm/php.ini
-ln -sf ${CONF_ROOT}/etc/php5/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
+ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php5/fpm/php.ini
+ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
 
 # Nginx
 ln -sf ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
@@ -88,5 +81,5 @@ ln -sf ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varni
 
 # Prepare instance directories
 mkdir -p ${INSTANCE_DIR}
-test ${OWNER_USER} != "vagrant" && (chown -R ${OWNER_USER}:${OWNER_USER} ${INSTANCES_ROOT})
+test ${OWNER_USER} != ${VAGRANT_USER} && (chown -R ${OWNER_USER}:${OWNER_USER} ${INSTANCES_ROOT})
 ln -sf ${INSTANCE_DIR} ${SHILA_ROOT}

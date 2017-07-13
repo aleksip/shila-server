@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "shila", autostart: false do |shila|
-    shila.vm.box = "debian/jessie64"
+    shila.vm.box = "ubuntu/xenial64"
     shila.vm.hostname = 'shila.vm'
     shila.vm.network :private_network, ip: '192.168.33.10'
 
