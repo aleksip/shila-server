@@ -26,7 +26,7 @@ apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7
 # PHP 5.6
 add-apt-repository ppa:ondrej/php
 apt-get update
-apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl
+apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5.6-xml
 
 # Nginx
 apt-get -y install nginx
