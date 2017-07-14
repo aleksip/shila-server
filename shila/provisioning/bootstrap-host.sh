@@ -23,11 +23,6 @@ apt-get -y install mysql-server mysql-client
 # PHP 7.0
 apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7.0-mbstring php7.0-xml php7.0-zip
 
-# PHP 5.6
-add-apt-repository ppa:ondrej/php
-apt-get update
-apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5.6-xml
-
 # Nginx
 apt-get -y install nginx
 
@@ -48,21 +43,10 @@ curl -sS https://drupalconsole.com/installer -L -o drupal.phar
 mv drupal.phar /usr/local/bin/drupal
 chmod +x /usr/local/bin/drupal
 
-# Node.js + npm
-curl -sSL https://deb.nodesource.com/setup_6.x | bash -
-apt-get install -y nodejs
-
-# Gulp
-npm install -g gulp
-
 
 ################################################################################
 # Configuration
 ################################################################################
-
-# PHP 5.6
-ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php/5.6/fpm/php.ini
-ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php/5.6/fpm/pool.d/www.conf
 
 # Nginx
 ln -sf ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
