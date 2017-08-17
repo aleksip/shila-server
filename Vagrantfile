@@ -15,6 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shila.vm.box = "ubuntu/xenial64"
     shila.vm.hostname = 'shila.vm'
     shila.vm.network :private_network, ip: '192.168.33.10'
+    # shila.vbguest.auto_update = false
 
     # Disable default mount
     shila.vm.synced_folder ".", "/vagrant", disabled: true
@@ -40,9 +41,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "/shila-instances/shila-dev/data/drupal-files", "/shila-instances/shila-dev/data/drupal-files", \
       u: "33", g: "33", after: :provision
 
-    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-privileged.sh"
-    shila.vm.provision :shell, :path => "shila/provisioning/bootstrap-unprivileged.sh", privileged: false
-    shila.vm.provision :shell, :path => "shila/provisioning/start-services.sh", run: "always"
+    shila.vm.provision :shell, :path => "shila/provisioning/shila-dev/bootstrap-privileged.sh"
+    shila.vm.provision :shell, :path => "shila/provisioning/shila-dev/bootstrap-unprivileged.sh", privileged: false
+    shila.vm.provision :shell, :path => "shila/provisioning/shila-dev/start-services.sh", run: "always"
   end
 
 end

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source ${MY_DIR}/scripts.conf
+source ${MY_DIR}/conf.sh
 
 
 ################################################################################
@@ -9,7 +9,7 @@ source ${MY_DIR}/scripts.conf
 ################################################################################
 
 # Xdebug
-apt-get -y install php7.0-xdebug
+apt-get -y install php-xdebug
 
 # PHP 5.6
 add-apt-repository ppa:ondrej/php
@@ -19,6 +19,7 @@ apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5
 # Node.js + npm
 curl -sSL https://deb.nodesource.com/setup_6.x | bash -
 apt-get install -y nodejs
+npm install -g npm@latest
 
 # Gulp
 npm install -g gulp
