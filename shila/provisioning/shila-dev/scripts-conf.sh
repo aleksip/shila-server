@@ -45,4 +45,8 @@ if [ -n "${SCRIPTS_CONF}" ]
     # You might want to change these based on the instance you are setting up.
     SHILA_DRUPAL_REPO=https://github.com/aleksip/shila-drupal
     SHILA_DRUPAL_BRANCH=master
+
+    # Rsync options
+    RSYNC_OPTIONS="-avz --iconv=utf-8-mac,utf-8 -e ssh"
+    RSYNC_OPTIONS_DELETE="--delete ${RSYNC_OPTIONS}"
 fi
