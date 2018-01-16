@@ -23,7 +23,7 @@ sub vcl_recv {
     #
     # Typically you clean up the request here, removing cookies you don't need,
     # rewriting the request, etc.
-    if (req.http.host ~ "\.dev") {
+    if (req.http.host ~ "\.test") {
       return(pass);
     }
 }

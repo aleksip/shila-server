@@ -1,0 +1,14 @@
+server {
+    listen 8080;
+    server_name shila.test;
+    return 301 http://www.shila.test$request_uri;
+}
+
+server {
+    listen 8080;
+    server_name www.shila.test;
+    root /var/www/shila-dev/code/shila-drupal/d8/drupal-8/web;
+    include nginx-drupal;
+    access_log /var/log/nginx/www_shila_test_access.log;
+    error_log /var/log/nginx/www_shila_test_error.log;
+}
