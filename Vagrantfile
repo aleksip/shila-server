@@ -9,6 +9,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 2048
+
+    # Don't create ubuntu-xenial-16.04-cloudimg-console.log file
+    vb.customize ["modifyvm", :id, "--uartmode1", "disconnected"]
   end
 
   config.vm.define "shila", autostart: false do |shila|
