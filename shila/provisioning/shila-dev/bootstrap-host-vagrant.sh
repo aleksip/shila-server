@@ -19,9 +19,9 @@ apt-get update
 apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5.6-xml
 
 # Node.js + npm
-curl -sSL https://deb.nodesource.com/setup_6.x | bash -
+curl -sSL https://deb.nodesource.com/setup_8.x | bash -
 apt-get install -y nodejs
-npm install -g npm@latest
+apt-get install -y build-essential
 
 # Gulp
 npm install -g gulp
