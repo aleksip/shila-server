@@ -35,7 +35,7 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 # Drush
-wget -nv http://files.drush.org/drush.phar
+wget -nv https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar
 chmod +x drush.phar
 mv drush.phar /usr/local/bin/drush
 
