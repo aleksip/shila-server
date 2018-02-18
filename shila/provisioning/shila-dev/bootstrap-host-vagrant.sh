@@ -24,7 +24,7 @@ apt-get install -y nodejs
 apt-get install -y build-essential
 
 # Gulp
-npm install -g gulp
+npm install -g gulp-cli
 
 
 ################################################################################
