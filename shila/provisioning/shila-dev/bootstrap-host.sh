@@ -27,9 +27,6 @@ apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7
 # Nginx
 apt-get -y install nginx
 
-# Varnish
-apt-get -y install varnish
-
 # Composer
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
@@ -58,11 +55,6 @@ ln -sf ${CONF_ROOT}/etc/nginx/sites-available /etc/nginx/sites-available
 rm /etc/nginx/sites-enabled/default
 ln -sf /etc/nginx/sites-available/local/www.shila.test /etc/nginx/sites-enabled/www.shila.test
 ln -sf /etc/nginx/sites-available/local/pl.shila.test /etc/nginx/sites-enabled/pl.shila.test
-
-# Varnish
-ln -sf ${CONF_ROOT}/etc/varnish/default.vcl /etc/varnish/default.vcl
-ln -sf ${CONF_ROOT}/etc/default/varnish /etc/default/varnish
-ln -sf ${CONF_ROOT}/etc/systemd/system/varnish.service /etc/systemd/system/varnish.service
 
 # Prepare instance directories
 mkdir -p ${INSTANCE_DIR}
