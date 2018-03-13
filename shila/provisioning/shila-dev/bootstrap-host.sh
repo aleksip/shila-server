@@ -22,7 +22,7 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get -y install mysql-server mysql-client
 
 # PHP 7.0
-apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7.0-mbstring php7.0-xml php7.0-zip
+apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7.0-mbstring php7.0-xml php7.0-zip php7.0-bcmath
 
 # Nginx
 apt-get -y install nginx
