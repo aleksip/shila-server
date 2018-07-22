@@ -48,8 +48,8 @@ chmod +x /usr/local/bin/drupal
 
 # Nginx
 ln -sf ${CONF_ROOT}/etc/nginx/nginx.conf /etc/nginx/nginx.conf
-ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal /etc/nginx/nginx-drupal
-ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal6 /etc/nginx/nginx-drupal6
+ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal.conf /etc/nginx/nginx-drupal.conf
+ln -sf ${CONF_ROOT}/etc/nginx/nginx-drupal6.conf /etc/nginx/nginx-drupal6.conf
 rm -rf /etc/nginx/sites-available
 ln -sf ${CONF_ROOT}/etc/nginx/sites-available /etc/nginx/sites-available
 rm /etc/nginx/sites-enabled/default
