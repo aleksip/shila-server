@@ -10,12 +10,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 2048
 
-    # Don't create ubuntu-xenial-16.04-cloudimg-console.log file
+    # Don't create ubuntu-bionic-18.04-cloudimg-console.log file
     vb.customize ["modifyvm", :id, "--uartmode1", "disconnected"]
   end
 
   config.vm.define "shila" do |shila|
-    shila.vm.box = "ubuntu/xenial64"
+    shila.vm.box = "ubuntu/bionic64"
     shila.vm.hostname = 'shila.vm'
     shila.vm.network :private_network, ip: '192.168.33.10'
     # shila.vbguest.auto_update = false

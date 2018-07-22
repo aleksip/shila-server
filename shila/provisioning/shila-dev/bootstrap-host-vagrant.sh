@@ -19,7 +19,7 @@ apt-get update
 apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5.6-xml
 
 # Node.js + npm
-curl -sSL https://deb.nodesource.com/setup_8.x | bash -
+curl -sSL https://deb.nodesource.com/setup_10.x | bash -
 apt-get install -y nodejs
 apt-get install -y build-essential
 
@@ -30,9 +30,6 @@ npm install -g gulp-cli
 ################################################################################
 # Configuration
 ################################################################################
-
-# Xdebug
-ln -fs ${CONF_ROOT}/etc/php/7.0/mods-available/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
 
 # PHP 5.6
 ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php/5.6/fpm/php.ini

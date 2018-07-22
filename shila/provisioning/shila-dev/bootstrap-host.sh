@@ -22,7 +22,7 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get -y install mysql-server mysql-client
 
 # PHP 7.0
-apt-get -y install php7.0-fpm php7.0-mysql php7.0-cli php7.0-gd php7.0-curl php7.0-mbstring php7.0-xml php7.0-zip php7.0-bcmath
+apt-get -y install php7.2-fpm php7.2-mysql php7.2-cli php7.2-gd php7.2-curl php7.2-mbstring php7.2-xml php7.2-zip php7.2-bcmath
 
 # Nginx
 apt-get -y install nginx
@@ -31,8 +31,8 @@ apt-get -y install nginx
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
-# Drush
-wget -nv https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar
+# Drush 8
+wget -nv https://github.com/drush-ops/drush/releases/download/8.1.17/drush.phar
 chmod +x drush.phar
 mv drush.phar /usr/local/bin/drush
 

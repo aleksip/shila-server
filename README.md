@@ -15,10 +15,10 @@ A setup for running one or more instances (development, staging, production...) 
     - `vagrant up shila`
 
 
-## Software installed on guest machine (`ubuntu/xenial64`)
+## Software installed on guest machine (`ubuntu/bionic64`)
 
 - [MySQL](https://www.mysql.com/)
-- [PHP](https://php.net/) 7.0 (for Drupal 7 and 8) and 5.6 (for Drupal 6)
+- [PHP](https://php.net/) 7.2 (for Drupal 7 and 8) and 5.6 (for Drupal 6)
 - [Nginx](https://nginx.org/)
 - [Git](https://git-scm.com/)
 - [Composer](https://getcomposer.org/)
