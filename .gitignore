@@ -2,5 +2,4 @@
 .idea
 .vagrant
 */instances/*
-!*/instances/.gitkeep
-ubuntu-xenial-16.04-cloudimg-console.log
+!*/instances/.keep
