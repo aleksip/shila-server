@@ -34,3 +34,6 @@ npm install -g gulp-cli
 # PHP 5.6
 ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php/5.6/fpm/php.ini
 ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php/5.6/fpm/pool.d/www.conf
+
+# Ubuntu user
+ln -sf ${CONF_ROOT}/home/ubuntu/.bash_aliases /home/ubuntu/.bash_aliases
