@@ -25,17 +25,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # Provisioning folder
     if Vagrant::Util::Platform.windows? then
-      shila.vm.synced_folder "shila/provisioning", "/shila-provisioning", type: "smb"
+      shila.vm.synced_folder "provisioning", "/shila-provisioning", type: "smb"
     else
-      shila.vm.synced_folder "shila/provisioning", "/shila-provisioning", nfs: true, \
+      shila.vm.synced_folder "provisioning", "/shila-provisioning", nfs: true, \
         :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
     end
 
     # Instances folder
     if Vagrant::Util::Platform.windows? then
-      shila.vm.synced_folder "shila/instances", "/shila-instances", type: "smb"
+      shila.vm.synced_folder "instances", "/shila-instances", type: "smb"
     else
-      shila.vm.synced_folder "shila/instances", "/shila-instances", nfs: true, \
+      shila.vm.synced_folder "instances", "/shila-instances", nfs: true, \
         :mount_options => ['nolock,vers=3,udp,noatime,actimeo=1']
     end
 
@@ -44,9 +44,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "/shila-instances/shila-dev/data/drupal-files", "/shila-instances/shila-dev/data/drupal-files", \
       u: "33", g: "33", after: :provision
 
-    shila.vm.provision :shell, :path => "shila/provisioning/shila-dev/bootstrap-privileged.sh"
-    shila.vm.provision :shell, :path => "shila/provisioning/shila-dev/bootstrap-unprivileged.sh", privileged: false
-    shila.vm.provision :shell, :path => "shila/provisioning/shila-dev/start-services.sh", run: "always"
+    shila.vm.provision :shell, :path => "provisioning/shila-dev/bootstrap-privileged.sh"
+    shila.vm.provision :shell, :path => "provisioning/shila-dev/bootstrap-unprivileged.sh", privileged: false
+    shila.vm.provision :shell, :path => "provisioning/shila-dev/start-services.sh", run: "always"
   end
 
 end
