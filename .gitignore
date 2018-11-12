@@ -1,5 +1,5 @@
 .DS_Store
 .idea
 .vagrant
-*/instances/*
-!*/instances/.keep
+/instances/
+!/instances/.keep
