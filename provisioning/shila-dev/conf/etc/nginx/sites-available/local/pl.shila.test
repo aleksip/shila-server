@@ -1,7 +1,7 @@
 server {
     listen 80;
     server_name pl.shila.test;
-    root /var/www/shila-dev/code/shila-drupal/d8/drupal-8/web/sites/www.shila.test/themes/shila_theme/pattern-lab/public;
+    root /var/www/shila-dev/code/shila-drupal/d8/codebases/www.shila.test/themes/shila_theme/pattern-lab/public;
     access_log /var/log/nginx/pl_shila_test_access.log;
     error_log /var/log/nginx/pl_shila_test_error.log;
 }
