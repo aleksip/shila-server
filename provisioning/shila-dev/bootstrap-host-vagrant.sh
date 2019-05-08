@@ -26,14 +26,26 @@ apt-get install -y build-essential
 # Gulp
 npm install -g gulp-cli
 
+# MailHog
+curl -sSL https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64 -o mailhog
+mv mailhog /usr/local/bin/mailhog
+chmod +x /usr/local/bin/mailhog
+apt-get install -y daemonize
+
 
 ################################################################################
 # Configuration
 ################################################################################
 
+# PHP 7.2
+ln -sf ${CONF_ROOT}/etc/php/7.2/fpm/php.ini /etc/php/7.2/fpm/php.ini
+
 # PHP 5.6
 ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php/5.6/fpm/php.ini
 ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php/5.6/fpm/pool.d/www.conf
+
+# MailHog
+ln -sf ${CONF_ROOT}/etc/init.d/mailhog /etc/init.d/mailhog
 
 # Ubuntu user
 ln -sf ${CONF_ROOT}/home/ubuntu/.bash_aliases /home/ubuntu/.bash_aliases
