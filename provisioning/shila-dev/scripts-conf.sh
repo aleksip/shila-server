@@ -2,7 +2,8 @@
 
 if [ -n "${SCRIPTS_CONF}" ]
   then
-    source ${SCRIPTS_CONF}
+    # shellcheck source=./scripts.conf
+    source "${SCRIPTS_CONF}"
   else
     # Instance, e.g. shila-dev or shila-prod.
     if [ -z "${INSTANCE}" ]

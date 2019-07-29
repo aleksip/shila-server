@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source ${MY_DIR}/scripts-conf.sh
+# shellcheck source=./scripts.conf
+source "${MY_DIR}/scripts-conf.sh"
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -14,7 +15,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get -y install php-xdebug
 
 # PHP 5.6
-add-apt-repository ppa:ondrej/php
+add-apt-repository -y ppa:ondrej/php
 apt-get update
 apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5.6-xml
 
@@ -38,14 +39,14 @@ apt-get install -y daemonize
 ################################################################################
 
 # PHP 7.2
-ln -sf ${CONF_ROOT}/etc/php/7.2/fpm/php.ini /etc/php/7.2/fpm/php.ini
+ln -sf "${CONF_ROOT}/etc/php/7.2/fpm/php.ini" /etc/php/7.2/fpm/php.ini
 
 # PHP 5.6
-ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/php.ini /etc/php/5.6/fpm/php.ini
-ln -sf ${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf /etc/php/5.6/fpm/pool.d/www.conf
+ln -sf "${CONF_ROOT}/etc/php/5.6/fpm/php.ini" /etc/php/5.6/fpm/php.ini
+ln -sf "${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf" /etc/php/5.6/fpm/pool.d/www.conf
 
 # MailHog
-ln -sf ${CONF_ROOT}/etc/init.d/mailhog /etc/init.d/mailhog
+ln -sf "${CONF_ROOT}/etc/init.d/mailhog" /etc/init.d/mailhog
 
 # Ubuntu user
-ln -sf ${CONF_ROOT}/home/ubuntu/.bash_aliases /home/ubuntu/.bash_aliases
+ln -sf "${CONF_ROOT}/home/ubuntu/.bash_aliases" /home/ubuntu/.bash_aliases
