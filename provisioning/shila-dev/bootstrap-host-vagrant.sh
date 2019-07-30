@@ -50,3 +50,6 @@ ln -sf "${CONF_ROOT}/etc/init.d/mailhog" /etc/init.d/mailhog
 
 # Ubuntu user
 ln -sf "${CONF_ROOT}/home/ubuntu/.bash_aliases" /home/ubuntu/.bash_aliases
+
+# Default to Xdebug off.
+sudo "${MY_DIR}/xoff.sh"
