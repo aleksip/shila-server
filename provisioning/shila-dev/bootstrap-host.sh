@@ -55,11 +55,11 @@ ln -sf "${CONF_ROOT}/etc/nginx/nginx-drupal.conf" /etc/nginx/nginx-drupal.conf
 ln -sf "${CONF_ROOT}/etc/nginx/nginx-drupal6.conf" /etc/nginx/nginx-drupal6.conf
 if [ -d /etc/nginx/sites-available ]; then rm -rf /etc/nginx/sites-available; fi
 ln -sf "${CONF_ROOT}/etc/nginx/sites-available" /etc/nginx/sites-available
-if [ -f /etc/nginx/sites-enabled/default ]; then rm /etc/nginx/sites-enabled/default; fi
+if [ -h /etc/nginx/sites-enabled/default ]; then rm /etc/nginx/sites-enabled/default; fi
 ln -sf /etc/nginx/sites-available/local/www.shila.test /etc/nginx/sites-enabled/www.shila.test
 ln -sf /etc/nginx/sites-available/local/pl.shila.test /etc/nginx/sites-enabled/pl.shila.test
 
 # Prepare instance directories.
 mkdir -p "${INSTANCE_DIR}"
 test "${OWNER_USER}" != "${VAGRANT_USER}" && ( chown -R "${OWNER_USER}":"${OWNER_USER}" "${INSTANCES_ROOT}" )
-if [ ! -f "${SHILA_ROOT}" ]; then ln -sf "${INSTANCE_DIR}" "${SHILA_ROOT}"; fi
+if [ ! -h "${SHILA_ROOT}" ]; then ln -sf "${INSTANCE_DIR}" "${SHILA_ROOT}"; fi
