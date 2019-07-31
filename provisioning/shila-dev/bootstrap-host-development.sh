@@ -38,12 +38,14 @@ apt-get install -y daemonize
 # Configuration
 ################################################################################
 
-# PHP 7.2
+# PHP 7.2 + Xdebug
 ln -sf "${CONF_ROOT}/etc/php/7.2/fpm/php.ini" /etc/php/7.2/fpm/php.ini
+ln -sf "${CONF_ROOT}/etc/php/7.2/mods-available/xdebug.ini" /etc/php/7.2/mods-available/xdebug.ini
 
-# PHP 5.6
+# PHP 5.6 + Xdebug
 ln -sf "${CONF_ROOT}/etc/php/5.6/fpm/php.ini" /etc/php/5.6/fpm/php.ini
 ln -sf "${CONF_ROOT}/etc/php/5.6/fpm/pool.d/www.conf" /etc/php/5.6/fpm/pool.d/www.conf
+ln -sf "${CONF_ROOT}/etc/php/5.6/mods-available/xdebug.ini" /etc/php/5.6/mods-available/xdebug.ini
 
 # MailHog
 ln -sf "${CONF_ROOT}/etc/init.d/mailhog" /etc/init.d/mailhog
