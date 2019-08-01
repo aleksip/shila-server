@@ -7,7 +7,7 @@ server {
 server {
     listen 80;
     server_name www.shila.test;
-    root /var/www/shila-dev/code/shila-drupal/d8/codebases/www.shila.test/web;
+    root /var/www/shila/code/shila-drupal/d8/codebases/www.shila.test/web;
     include nginx-drupal.conf;
     access_log /var/log/nginx/www_shila_test_access.log;
     error_log /var/log/nginx/www_shila_test_error.log;

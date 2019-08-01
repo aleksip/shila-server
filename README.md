@@ -27,7 +27,7 @@ Vagrant friendly Ubuntu 18.04 server setup, primarily meant for local Drupal dev
     - `sudo ln -s /usr/local/shila-server/provisioning /shila-provisioning`
     - `sudo ln -s /usr/local/shila-server/instances /shila-instances`
 - Run the bootstrap scripts in the provisioning directory
-    - `cd /shila-provisioning/shila-dev/`
+    - `cd /shila-provisioning/shila/`
     - `sudo ./bootstrap-privileged.sh`
     - `./bootstrap-unprivileged.sh`
 

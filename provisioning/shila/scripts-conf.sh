@@ -4,8 +4,8 @@
 # Configurable variables, default values
 ################################################################################
 
-# Instance, e.g. shila-dev or shila-prod.
-INSTANCE=${INSTANCE:-shila-dev}
+# Instance, e.g. shila or shila-prod.
+INSTANCE=${INSTANCE:-shila}
 
 # Paths for the provisioning and instances directories. These can be mounted or
 # symlinked paths to the actual directories.
