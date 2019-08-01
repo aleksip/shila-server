@@ -1,53 +1,47 @@
 #!/usr/bin/env bash
 
-if [ -n "${SCRIPTS_CONF}" ]
-  then
-    # shellcheck source=./scripts.conf
-    source "${SCRIPTS_CONF}"
-  else
-    # Instance, e.g. shila-dev or shila-prod.
-    if [ -z "${INSTANCE}" ]
-      then
-        INSTANCE=shila-dev
-    fi
+################################################################################
+# Configurable variables, default values
+################################################################################
 
-    # You probably want to change these if you are not running the scripts in a
-    # Vagrant guest.
-    if [ -z "${CONF_ROOT}" ]
-      then
-        CONF_ROOT=/shila-provisioning/shila-dev/conf
-    fi
-    INSTANCES_ROOT=/shila-instances
+# Instance, e.g. shila-dev or shila-prod.
+INSTANCE=${INSTANCE:-shila-dev}
 
-    # Vagrant user.
-    VAGRANT_USER=ubuntu
+# Paths for the provisioning and instances directories. These can be mounted or
+# symlinked paths to the actual directories.
+PROVISIONING_ROOT=${PROVISIONING_ROOT:-/shila-provisioning}
+INSTANCES_ROOT=${INSTANCES_ROOT:-/shila-instances}
 
-    # The user account used to provision code and data.
-    # This must be an existing user account.
-    OWNER_USER=ubuntu
+# Timezone.
+TIMEZONE=${TIMEZONE:-Europe/Helsinki}
 
-    # Timezone.
-    TIMEZONE=Europe/Helsinki
+# MySQL root password.
+MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-shila}
 
-    # MySQL root password.
-    # You might want to change this.
-    MYSQL_ROOT_PASSWORD=shila
+# The user account used to provision code and data.
+# This must be an existing user account.
+OWNER_USER=${OWNER_USER:-vagrant}
 
-    # Shila root directory used by scripts and configuration.
-    SHILA_ROOT=/var/www/${INSTANCE}
 
-    # Other directories used by scripts and configuration.
-    INSTANCE_DIR=${INSTANCES_ROOT}/${INSTANCE}
-    CODE_DIR=${SHILA_ROOT}/code
-    DATA_DIR=${SHILA_ROOT}/data
-    SQL_DUMPS_DIR=${DATA_DIR}/sql-dumps
+################################################################################
+# Derived and fixed variables, do not change these
+################################################################################
 
-    # Repository and branch to clone Shila Drupal from.
-    # You might want to change these based on the instance you are setting up.
-    SHILA_DRUPAL_REPO=https://github.com/aleksip/shila-drupal
-    SHILA_DRUPAL_BRANCH=master
+# Provisioning scripts directory.
+SCRIPTS_DIR="${PROVISIONING_ROOT}/${INSTANCE}"
 
-    # Rsync options
-    RSYNC_OPTIONS="-avz --iconv=utf-8-mac,utf-8 -e ssh"
-    RSYNC_OPTIONS_DELETE="--delete ${RSYNC_OPTIONS}"
-fi
+# Root directory for configuration files.
+CONF_ROOT="${SCRIPTS_DIR}/conf"
+
+# Instance directory.
+INSTANCE_DIR="${INSTANCES_ROOT}/${INSTANCE}"
+
+# Instance root directory. This is the base path used in configuration files.
+# It will be created as a symbolic link to INSTANCE_DIR.
+SHILA_ROOT="/var/www/${INSTANCE}"
+
+# Code directory.
+CODE_DIR="${SHILA_ROOT}/code"
+
+# Data directory.
+DATA_DIR="${SHILA_ROOT}/data"

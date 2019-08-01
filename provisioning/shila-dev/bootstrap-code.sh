@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
 
-MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# shellcheck source=./scripts.conf
-source "${MY_DIR}/scripts-conf.sh"
+# shellcheck source=scripts-conf.sh
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts-conf.sh"
 
-# Prepare directories.
-mkdir -p "${CODE_DIR}"
+source "${SCRIPTS_DIR}/functions.sh"
 
 # Shila Drupal
-cd "${CODE_DIR}" || exit 1
-if [ -d shila-drupal ]
-  then
-    cd shila-drupal || exit 1
-    git pull
-  else
-    git clone -b "${SHILA_DRUPAL_BRANCH}" "${SHILA_DRUPAL_REPO}" shila-drupal
-fi
+shila_setup_repo "${CODE_DIR}" shila-drupal https://github.com/aleksip/shila-drupal
 "${CODE_DIR}/shila-drupal/scripts/bootstrap-code.sh"

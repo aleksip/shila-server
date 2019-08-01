@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# shellcheck source=./scripts.conf
-source "${MY_DIR}/scripts-conf.sh"
+# shellcheck source=scripts-conf.sh
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts-conf.sh"
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -54,4 +53,4 @@ ln -sf "${CONF_ROOT}/etc/init.d/mailhog" /etc/init.d/mailhog
 ln -sf "${CONF_ROOT}/home/ubuntu/.bash_aliases" /home/ubuntu/.bash_aliases
 
 # Default to Xdebug off.
-sudo "${MY_DIR}/xoff.sh"
+sudo "${SCRIPTS_DIR}/xoff.sh"

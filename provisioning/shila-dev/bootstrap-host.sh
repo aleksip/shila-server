@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# shellcheck source=./scripts.conf
-source "${MY_DIR}/scripts-conf.sh"
+# shellcheck source=scripts-conf.sh
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts-conf.sh"
 
 export DEBIAN_FRONTEND=noninteractive
 timedatectl set-timezone "${TIMEZONE}"
@@ -35,9 +34,9 @@ curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 
 # Drush 8
-wget -nv https://github.com/drush-ops/drush/releases/download/8.3.0/drush.phar
-chmod +x drush.phar
+curl -sSLO https://github.com/drush-ops/drush/releases/download/8.3.0/drush.phar
 mv drush.phar /usr/local/bin/drush
+chmod +x /usr/local/bin/drush
 
 # Drupal Console
 curl -sS https://drupalconsole.com/installer -L -o drupal.phar
@@ -60,6 +59,15 @@ ln -sf /etc/nginx/sites-available/local/www.shila.test /etc/nginx/sites-enabled/
 ln -sf /etc/nginx/sites-available/local/pl.shila.test /etc/nginx/sites-enabled/pl.shila.test
 
 # Prepare instance directories.
-mkdir -p "${INSTANCE_DIR}"
-test "${OWNER_USER}" != "${VAGRANT_USER}" && ( chown -R "${OWNER_USER}":"${OWNER_USER}" "${INSTANCES_ROOT}" )
+if [ ! -d "${INSTANCE_DIR}" ]; then mkdir -p "${INSTANCE_DIR}"; fi
 if [ ! -h "${SHILA_ROOT}" ]; then ln -sf "${INSTANCE_DIR}" "${SHILA_ROOT}"; fi
+if [ ! -d "${CODE_DIR}" ]
+  then
+    mkdir -p "${CODE_DIR}"
+    test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${CODE_DIR}" )
+fi
+if [ ! -d "${DATA_DIR}" ]
+  then
+    mkdir -p "${DATA_DIR}"
+    test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${DATA_DIR}" )
+fi
