@@ -3,6 +3,8 @@
 # shellcheck source=scripts-conf.sh
 source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts-conf.sh"
 
+source "${SCRIPTS_DIR}/functions.sh"
+
 export DEBIAN_FRONTEND=noninteractive
 timedatectl set-timezone "${TIMEZONE}"
 
@@ -59,15 +61,4 @@ ln -sf /etc/nginx/sites-available/local/www.shila.test /etc/nginx/sites-enabled/
 ln -sf /etc/nginx/sites-available/local/pl.shila.test /etc/nginx/sites-enabled/pl.shila.test
 
 # Prepare instance directories.
-if [ ! -d "${INSTANCE_DIR}" ]; then mkdir -p "${INSTANCE_DIR}"; fi
-if [ ! -h "${SHILA_ROOT}" ]; then ln -sf "${INSTANCE_DIR}" "${SHILA_ROOT}"; fi
-if [ ! -d "${CODE_DIR}" ]
-  then
-    mkdir -p "${CODE_DIR}"
-    test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${CODE_DIR}" )
-fi
-if [ ! -d "${DATA_DIR}" ]
-  then
-    mkdir -p "${DATA_DIR}"
-    test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${DATA_DIR}" )
-fi
+shila_prepare_instance_dirs

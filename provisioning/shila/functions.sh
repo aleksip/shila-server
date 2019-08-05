@@ -1,6 +1,24 @@
 #!/usr/bin/env bash
 
-# Check out or update repositories.
+# Creates instance, code and data directories if they do not exist and sets
+# correct owner/group.
+shila_prepare_instance_dirs ()
+{
+  if [ ! -e "${INSTANCE_DIR}" ]; then mkdir -p "${INSTANCE_DIR}"; fi
+  if [ ! -e "${SHILA_ROOT}" ]; then ln -sf "${INSTANCE_DIR}" "${SHILA_ROOT}"; fi
+  if [ ! -e "${CODE_DIR}" ]
+    then
+      mkdir -p "${CODE_DIR}"
+      test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${CODE_DIR}" )
+  fi
+  if [ ! -e "${DATA_DIR}" ]
+    then
+      mkdir -p "${DATA_DIR}"
+      test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${DATA_DIR}" )
+  fi
+}
+
+# Checks out or updates repositories.
 #
 # ${1} Base path
 # ${2} Repository directory name
