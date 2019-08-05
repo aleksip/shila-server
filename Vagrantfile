@@ -8,7 +8,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 2048
+    vb.memory = 3072
 
     # Don't create ubuntu-bionic-18.04-cloudimg-console.log file
     vb.customize ["modifyvm", :id, "--uartmode1", "disconnected"]
