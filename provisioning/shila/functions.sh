@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-# Check out or update repositories
+# Check out or update repositories.
 #
 # ${1} Base path
 # ${2} Repository directory name
 # ${3} Repository URL
 # ${4} Branch (optional)
-shila_setup_repo () {
+shila_setup_repo ()
+{
   echo "Setting up repository ${2}..."
   cd "${1}" || exit 1
   if [ -d "${2}" ]
