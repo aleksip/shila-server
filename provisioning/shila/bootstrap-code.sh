@@ -5,6 +5,9 @@ source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts-conf.sh"
 
 source "${SCRIPTS_DIR}/functions.sh"
 
+# Prestissimo
+composer global require hirak/prestissimo
+
 # Shila Drupal
 shila_setup_repo "${CODE_DIR}" shila-drupal https://github.com/aleksip/shila-drupal
 "${CODE_DIR}/shila-drupal/scripts/bootstrap-code.sh"
