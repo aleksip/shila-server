@@ -14,7 +14,9 @@ shila_prepare_instance_dirs ()
   if [ ! -e "${DATA_DIR}" ]
     then
       mkdir -p "${DATA_DIR}"
-      test "${OWNER_USER}" != vagrant && ( chown "${OWNER_USER}":"${OWNER_USER}" "${DATA_DIR}" )
+      mkdir -p "${DATA_DIR}/drupal-files"
+      mkdir -p "${DATA_DIR}/sql-dumps"
+      test "${OWNER_USER}" != vagrant && ( chown -R "${OWNER_USER}":"${OWNER_USER}" "${DATA_DIR}" )
   fi
 }
 
