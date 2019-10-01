@@ -42,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # bindfs remount
     shila.bindfs.bind_folder \
       "/shila-instances/shila/data/drupal-files", "/shila-instances/shila/data/drupal-files", \
-      u: "33", g: "33", after: :provision
+      u: "www-data", g: "www-data", p: "u=rwX:g=rwX:o=rD", after: :provision
 
     shila.vm.provision :shell, :path => "provisioning/shila/bootstrap-privileged.sh"
     shila.vm.provision :shell, :path => "provisioning/shila/bootstrap-unprivileged.sh", privileged: false
