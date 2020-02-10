@@ -13,6 +13,9 @@ export DEBIAN_FRONTEND=noninteractive
 # Xdebug
 apt-get -y install php-xdebug
 
+# PHP 7.2
+apt-get -y install php7.2-sqlite
+
 # PHP 5.6
 add-apt-repository -y ppa:ondrej/php
 apt-get update
