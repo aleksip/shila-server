@@ -35,7 +35,7 @@ Vagrant friendly Ubuntu 18.04 server setup, primarily meant for local Drupal dev
 ## Installed software
 
 - [MySQL](https://www.mysql.com/)
-- [PHP](https://php.net/) 7.2 (for Drupal 7 and 8) and 5.6 (for Drupal 6)
+- [PHP](https://php.net/) 7.4 (for Drupal 7, 8 and 9) and 5.6 (for Drupal 6)
 - [Xdebug](https://xdebug.org/)
 - [Nginx](https://nginx.org/)
 - [MailHog](https://github.com/mailhog/MailHog)
