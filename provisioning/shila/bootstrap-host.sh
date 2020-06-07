@@ -24,6 +24,8 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get -y install mysql-server mysql-client
 
 # PHP 7.4
+add-apt-repository -y ppa:ondrej/php
+apt-get update
 apt-get -y install php7.4-bcmath php7.4-bz2 php7.4-cli php7.4-curl php7.4-dev \
   php7.4-fpm php7.4-gd php7.4-geoip php7.4-imagick php7.4-intl php7.4-mbstring \
   php7.4-mysql php7.4-xml php7.4-zip
@@ -34,16 +36,6 @@ apt-get -y install nginx
 # Composer
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
-
-# Drush 8
-curl -sSLO https://github.com/drush-ops/drush/releases/download/8.3.0/drush.phar
-mv drush.phar /usr/local/bin/drush
-chmod +x /usr/local/bin/drush
-
-# Drupal Console
-curl -sS https://drupalconsole.com/installer -L -o drupal.phar
-mv drupal.phar /usr/local/bin/drupal
-chmod +x /usr/local/bin/drupal
 
 
 ################################################################################

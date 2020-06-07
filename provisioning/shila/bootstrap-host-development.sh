@@ -13,13 +13,21 @@ export DEBIAN_FRONTEND=noninteractive
 # Xdebug
 apt-get -y install php-xdebug
 
-# PHP 7.2
-apt-get -y install php7.2-sqlite
+# PHP 7.4
+apt-get -y install php7.4-sqlite
 
 # PHP 5.6
-add-apt-repository -y ppa:ondrej/php
-apt-get update
 apt-get -y install php5.6-fpm php5.6-mysql php5.6-cli php5.6-gd php5.6-curl php5.6-xml
+
+# Drush 8
+curl -sSLO https://github.com/drush-ops/drush/releases/download/8.3.0/drush.phar
+mv drush.phar /usr/local/bin/drush
+chmod +x /usr/local/bin/drush
+
+# Drupal Console
+curl -sS https://drupalconsole.com/installer -L -o drupal.phar
+mv drupal.phar /usr/local/bin/drupal
+chmod +x /usr/local/bin/drupal
 
 # Node.js + npm
 curl -sSL https://deb.nodesource.com/setup_10.x | bash -
