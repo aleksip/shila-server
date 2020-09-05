@@ -48,9 +48,9 @@ apt-get install -y daemonize
 # Configuration
 ################################################################################
 
-# PHP 7.2 + Xdebug
-ln -sf "${CONF_ROOT}/etc/php/7.2/fpm/php.ini" /etc/php/7.2/fpm/php.ini
-ln -sf "${CONF_ROOT}/etc/php/7.2/mods-available/xdebug.ini" /etc/php/7.2/mods-available/xdebug.ini
+# PHP 7.4 + Xdebug
+ln -sf "${CONF_ROOT}/etc/php/7.4/fpm/php.ini" /etc/php/7.4/fpm/php.ini
+ln -sf "${CONF_ROOT}/etc/php/7.4/mods-available/xdebug.ini" /etc/php/7.4/mods-available/xdebug.ini
 
 # PHP 5.6 + Xdebug
 ln -sf "${CONF_ROOT}/etc/php/5.6/fpm/php.ini" /etc/php/5.6/fpm/php.ini
